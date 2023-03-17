@@ -14,7 +14,7 @@ import ibf2022.ssf.day19.model.Love;
 import ibf2022.ssf.day19.service.LoveService;
 
 @Controller
-@RequestMapping()
+@RequestMapping(path = {"/", "index.html"})
 public class LoveController {
     
     @Autowired

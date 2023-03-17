@@ -17,6 +17,16 @@ public class Love implements Comparable<Love>{
     private String result;
     private String id;
 
+    public Love(String fname, String sname) {
+        this.fname = fname;
+        this.sname = sname;
+        this.id = generateId();
+    }
+
+    public Love() {
+        this.id = generateId();
+    }
+
     public String getFname() {
         return fname;
     }
@@ -41,16 +51,14 @@ public class Love implements Comparable<Love>{
     public void setResult(String result) {
         this.result = result;
     }
-    
     public String getId() {
         return id;
     }
-    
     public void setId(String id) {
         this.id = id;
     }
 
-    public static synchronized String generateId() {
+    public synchronized String generateId() {
         SecureRandom sr = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         while (sb.length() < 8) {

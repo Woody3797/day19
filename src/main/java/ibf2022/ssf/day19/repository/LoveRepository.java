@@ -18,7 +18,7 @@ public class LoveRepository {
     RedisTemplate<String, String> template;
 
     public void save(Love love) {
-        love.setId(Love.generateId());
+        //love.setId(love.generateId());
         template.opsForValue().set(love.getId(), love.toJSON().toString());
         String result = template.opsForValue().get(love.getId());
 
