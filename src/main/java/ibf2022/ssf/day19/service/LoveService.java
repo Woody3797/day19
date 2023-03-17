@@ -32,7 +32,7 @@ public class LoveService {
     public Optional<Love> getLove(String fname, String sname) throws IOException {
         String loveURL = UriComponentsBuilder.fromUriString(loveCalculatorURL).queryParam("sname", sname.replaceAll(" ", "+")).queryParam("fname", fname.replaceAll(" ", "+")).toUriString();
 
-        RequestEntity request = RequestEntity.get(loveURL).header("X-RapidAPI-Key", loveCalculatorAPIKey).header("X-RapidAPI-Host", loveCalculatorHost).build();
+        RequestEntity<Void> request = RequestEntity.get(loveURL).header("X-RapidAPI-Key", loveCalculatorAPIKey).header("X-RapidAPI-Host", loveCalculatorHost).build();
 
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> response = template.exchange(request, String.class);
