@@ -1,6 +1,7 @@
 package ibf2022.ssf.day19.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class LoveService {
 
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> response = template.exchange(request, String.class);
-        Love love = Love.create(response.getBody());
+        Love love = Love.create(response.getBody().toString());
 
         if (love != null) {
             return Optional.of(love);
@@ -44,11 +45,16 @@ public class LoveService {
         return Optional.empty();
     }
 
-    public Optional<Love> getById(String id) throws IOException {
-        return loveRepo.findById(id);
+    public Love getById(String id) throws IOException {
+        return loveRepo.findById(id).get();
     }
 
     public void saveLove(Love love) {
         loveRepo.save(love);
+    }
+
+    public List<Love> getLoveList() throws IOException {
+        List<Love> loveList = loveRepo.getAllMatchMaking();
+        return loveList;
     }
 }

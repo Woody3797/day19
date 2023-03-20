@@ -7,10 +7,11 @@
     <title>Document</title>
   </head>
   <body>
+    <h1>List</h1>
     <div class="container">
       <table border="1">
         <tr
-          th:each="a, iStat : ${arr}"
+          th:each="a, iStat : ${love}"
           th:style="${a.percentage > 70}? 'font-weight: bold;'"
           th:alt-title="${iStat.even}? 'even' : 'odd'"
         >
@@ -19,8 +20,15 @@
           <td>&hearts;</td>
           <td th:text="${a.sname}" />
           <td th:text="${a.percentage}" />
+          <td th:text="${a.result}" />
         </tr>
       </table>
+    </div>
+    <br>
+    <div>
+      <form action="/" method="get">
+        <button class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" type="submit">Back to calculator</button>
+      </form>
     </div>
   </body>
 </html>

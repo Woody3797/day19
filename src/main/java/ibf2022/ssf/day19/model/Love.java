@@ -3,17 +3,18 @@ package ibf2022.ssf.day19.model;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLDecoder;
 import java.security.SecureRandom;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
-public class Love implements Comparable<Love>{
+public class Love {
     
     private String fname;
     private String sname;
-    private String percentage;
+    private Integer percentage;
     private String result;
     private String id;
 
@@ -39,10 +40,10 @@ public class Love implements Comparable<Love>{
     public void setSname(String sname) {
         this.sname = sname;
     }
-    public String getPercentage() {
+    public Integer getPercentage() {
         return percentage;
     }
-    public void setPercentage(String percentage) {
+    public void setPercentage(Integer percentage) {
         this.percentage = percentage;
     }
     public String getResult() {
@@ -72,9 +73,11 @@ public class Love implements Comparable<Love>{
         try (InputStream is = new ByteArrayInputStream(json.getBytes())) {
             JsonReader jr = Json.createReader(is);
             JsonObject jo = jr.readObject();
-            love.setFname(jo.getString("fname"));
-            love.setSname(jo.getString("sname"));
-            love.setPercentage(jo.getString("percentage"));
+            String person1Name = URLDecoder.decode(jo.getString("fname"), "UTF-8");
+            String person2Name = URLDecoder.decode(jo.getString("sname"), "UTF-8");
+            love.setFname(person1Name);
+            love.setSname(person2Name);
+            love.setPercentage(Integer.parseInt(jo.getString("percentage")));
             love.setResult(jo.getString("result"));
         }
         return love;
@@ -84,16 +87,9 @@ public class Love implements Comparable<Love>{
         return Json.createObjectBuilder()
         .add("fname", fname)
         .add("sname", sname)
-        .add("percentage", percentage)
+        .add("percentage", percentage.toString())
         .add("result", result)
         .build();
     }
-    
-    @Override
-    public int compareTo(Love o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
-    }
-    
 
 }
