@@ -37,7 +37,7 @@ public class LoveService {
 
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> response = template.exchange(request, String.class);
-        Love love = Love.create(response.getBody().toString());
+        Love love = Love.create(response.getBody());
 
         if (love != null) {
             return Optional.of(love);
