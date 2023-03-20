@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>Love Calculator</h1>
-    <div class="container">
+<body style="background-color:rgb(133, 133, 133);">
+    <h1 style="width: max-content; margin:0 auto">Love Calculator</h1>
+    <div class="container" style="text-align:center; width: max-content; margin:0 auto;border-style:double;">
         <form action="getPercentage" method="get">
             <div>
                 First Name: <input type="text" name="fname" id="fname" required />
@@ -20,17 +20,16 @@
             <br>
             <button type="submit">Calculate Love</button>
         </form>
+        <br>
+        <div>
+            <form action="/list" method="get">
+                <button type="submit">Show all results</button>
+            </form>
+        </div>
+        <br>
+        <div>
+            <button onclick="location.href='list'">Also show results</button>
+        </div>
     </div>
-    <br>
-    <div>
-        <form action="list" method="get">
-            <button type="submit">Show all results</button>
-        </form>
-    </div>
-    <br>
-    <div>
-        <button onclick="location.href='list'">Also results</button>
-    </div>
-    
 </body>
 </html>
