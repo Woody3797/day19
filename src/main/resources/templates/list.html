@@ -6,29 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
-    <h1>List</h1>
-    <div class="container">
-      <table border="1">
-        <tr
-          th:each="a, iStat : ${love}"
-          th:style="${a.percentage > 70}? 'font-weight: bold;'"
-          th:alt-title="${iStat.even}? 'even' : 'odd'"
-        >
-          <td th:text="${iStat.index+1}" />
+  <body style="background-color:rgb(133, 133, 133);">
+    <h1 style="width: max-content; margin:0 auto">List</h1>
+    <div class="container" style="text-align:center; width: max-content; margin:0 auto;">
+      <table border="2" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:x-large">
+        <tr th:each="a, num : ${love}"
+          th:style="${a.percentage > 70}? 'font-weight: bold;'">
+          <td th:text="${num.index+1}" />
           <td th:text="${a.fname}" />
-          <td>&hearts;</td>
+          <td />&hearts;
           <td th:text="${a.sname}" />
           <td th:text="${a.percentage}" />
           <td th:text="${a.result}" />
         </tr>
       </table>
-    </div>
-    <br>
-    <div>
-      <form action="/" method="get">
-        <button class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" type="submit">Back to calculator</button>
-      </form>
+      <br>
+        <button onclick="location.href='/'" class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-green-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" type="submit">Back to calculator</button>
     </div>
   </body>
 </html>
